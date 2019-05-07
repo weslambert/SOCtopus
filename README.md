@@ -9,7 +9,7 @@ Build the image:
 
 `cd SOCtopus && sudo docker build -t soctopus .`
 
-Add the following to `/etc/apache3/sites-available/securityonion.conf`:
+Add the following to `/etc/apache2/sites-available/securityonion.conf`:
 
 ````
 <Location /soctopus>
