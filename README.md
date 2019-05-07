@@ -28,6 +28,10 @@ Add the following to `/etc/apache3/sites-available/securityonion.conf`:
 
 ````
 
+Restart Apache:
+
+`sudo service apache2 restart`
+
 Run Docker container:   
 
 `sudo docker run -d --name=soctopus -p 0.0.0.0:7000:7000 -v $PATHTO/SOCtopus.conf:/SOCtopus/SOCtopus.conf:ro`
