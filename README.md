@@ -5,9 +5,16 @@ Clone the repo:
 
 `git clone https://github.com/weslambert/soctopus`
 
-Build the image:   
+Change into directory:   
+`cd SOCtopus`
 
-`cd SOCtopus && sudo docker build -t soctopus .`
+Edit the config file to include your URL and API key:
+
+`sudo vi SOCtopus.conf`
+
+Build the image and start the container:
+
+`sudo docker compose up -d`
 
 Add the following to `/etc/apache2/sites-available/securityonion.conf`:
 
@@ -32,14 +39,10 @@ Restart Apache:
 
 `sudo service apache2 restart`
 
-Run Docker container:   
 
-`sudo docker run -d --name=soctopus -p 0.0.0.0:7000:7000 -v $PATHTO/SOCtopus.conf:/SOCtopus/SOCtopus.conf:ro soctopus`
-
-Connect to so-elastic-net:    
-
-`sudo docker network connect --alias soctopus so-elastic-net soctopus`
-
-Add scripted field in Kibana, named `TheHive`, specifying as a string value and the script as:
+Add scripted field in Kibana. For example, for TheHive, name it `TheHive`, specifying as a string value and the script as:
 
 `'https://SECURITYONIONIP/soctopus/thehive/alert/' + doc['_id'].value`
+
+
+Test by clicking the hyperlinked field from an applicable log in Discover.  An alert should be sent to TheHive, and the user should be redirected to the alerts view.
