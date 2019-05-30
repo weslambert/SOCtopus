@@ -34,8 +34,12 @@ Restart Apache:
 
 Run Docker container:   
 
-`sudo docker run -d --name=soctopus -p 0.0.0.0:7000:7000 -v $PATHTO/SOCtopus.conf:/SOCtopus/SOCtopus.conf:ro`
+`sudo docker run -d --name=soctopus -p 0.0.0.0:7000:7000 -v $PATHTO/SOCtopus.conf:/SOCtopus/SOCtopus.conf:ro soctopus`
 
 Connect to so-elastic-net:    
 
 `sudo docker network connect --alias soctopus so-elastic-net soctopus`
+
+Add scripted field in Kibana, named `TheHive`, specifying as a string value and the script as:
+
+`'https://SECURITYONIONIP/soctopus/thehive/alert/' + doc['_id'].value`
