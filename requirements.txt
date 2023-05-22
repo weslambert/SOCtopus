@@ -1,4 +1,4 @@
-requests==2.21.0
+requests==2.31.0
 future==0.16.0
 werkzeug>=0.15.3
 elasticsearch==6.3.1
